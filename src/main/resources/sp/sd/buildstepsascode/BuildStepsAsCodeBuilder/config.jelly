@@ -1,0 +1,38 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+    <j:set var="generatedKey" value="${descriptor.generatedKey}"/>
+    <f:entry title="Json Data" field="buildContent">
+        <f:textarea/>
+    </f:entry>
+    <f:dropdownDescriptorSelector field="buildStep" title="Build Step"
+                                  descriptors="${descriptor.applicableDescriptors}"/>
+    <f:block>
+        <table width="100%">
+            <tr>
+                <td align="right">
+                    <input type="button" value="Generate Groovy"
+                           onclick="javascript:add_${generatedKey}(); return false" class="submit-button primary"/>
+                    <input type="hidden" name="generatedKey" value="${generatedKey}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="msg${generatedKey}" class="help"/>
+                </td>
+            </tr>
+        </table>
+    </f:block>
+    <script>
+        var generateKey${generatedKey} =
+        <st:bind value="${descriptor}"/>
+        function add_${generatedKey}() {
+                buildFormTree(document.forms.config);
+                var json = JSON.stringify(JSON.parse(document.forms.config.elements.json.value));
+                generateKey${generatedKey}.generateGroovy(json, ${generatedKey}, function(t) {
+                document.getElementById('msg${generatedKey}').innerHTML = t.responseObject();
+                document.getElementById('msg${generatedKey}').style.display = 'block';
+            });
+        }
+    </script>
+</j:jelly>
