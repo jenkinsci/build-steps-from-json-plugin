@@ -13,7 +13,6 @@ Run locally
 Usage
 ---
 This plugin enables a builder which takes buildsteps as code and executes them in freestyle project. 
-At present there is no support to write buildsteps as code and execute in freestyle project.
 Snippet generator also provided to user what and how to define builder in formatted code.
 This avoids the large listing of build steps in configuration screen with long scrollable.
 
