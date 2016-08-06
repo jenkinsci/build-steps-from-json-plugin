@@ -18,33 +18,34 @@ This avoids the large listing of build steps in configuration screen with long s
 
 Example
 ---
-[
-  {
-    "stepClass": "hudson.tasks.BatchFile",
-    "stepDetails": [
+
+    [
       {
-        "command": "echo \"test\""
+        "stepClass": "hudson.tasks.BatchFile",
+        "stepDetails": [
+          {
+            "command": "echo \"test\""
+          },
+          {
+            "command": "echo \"test1\""
+          }
+        ]
       },
       {
-        "command": "echo \"test1\""
-      }
-    ]
-  },
-  {
-    "stepClass": "sp.sd.fileoperations.FileOperationsBuilder",
-    "stepDetails": [
-      {
-        "fileOperations": [
+        "stepClass": "sp.sd.fileoperations.FileOperationsBuilder",
+        "stepDetails": [
           {
-            "$class": "FileCreateOperation",
-            "fileContent": "test",
-            "fileName": "test.txt"
+            "fileOperations": [
+              {
+                "$class": "FileCreateOperation",
+                "fileContent": "test",
+                "fileName": "test.txt"
+              }
+            ]
           }
         ]
       }
     ]
-  }
-]
 
 Note
 ---
