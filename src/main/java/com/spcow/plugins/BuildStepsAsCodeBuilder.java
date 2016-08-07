@@ -1,4 +1,4 @@
-package sp.sd.buildstepsascode;
+package com.spcow.plugins;
 
 import hudson.*;
 import hudson.model.*;
@@ -103,7 +103,7 @@ public class BuildStepsAsCodeBuilder extends Builder implements SimpleBuildStep 
                     net.sf.json.JSONArray buildersListJsonData = net.sf.json.JSONArray.fromObject(builder);
                     for (Object builderObject : buildersListJsonData) {
                         net.sf.json.JSONObject builderJsonData = (net.sf.json.JSONObject) builderObject;
-                        if (builderJsonData.getString("stapler-class").equals("sp.sd.buildstepsascode.BuildStepsAsCodeBuilder")) {
+                        if (builderJsonData.getString("stapler-class").equals("com.spcow.plugins.BuildStepsAsCodeBuilder")) {
                             if (builderJsonData.getString("generatedKey").equals(key)) {
                                 actualBuilder = builderJsonData.getString("buildStep");
                             }
@@ -156,14 +156,8 @@ public class BuildStepsAsCodeBuilder extends Builder implements SimpleBuildStep 
             }
         }
 
-        private String generatedKey;
-
         public String getGeneratedKey() {
-            if (generatedKey == null) {
-                return Integer.toString(generator.nextInt(32000));
-            } else {
-                return generatedKey;
-            }
+            return Integer.toString(generator.nextInt(32000));
         }
     }
 }

@@ -1,6 +1,7 @@
-package sp.sd.buildstepsascode;
+package com.spcow.plugins;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,6 +13,7 @@ import java.util.*;
  */
 public class Util {
 
+    @SuppressFBWarnings("EC_UNRELATED_TYPES_USING_POINTER_EQUALITY")
     public static Map<String, Object> jsonToMap(JSONObject json) throws JSONException {
         Map<String, Object> retMap = new HashMap<String, Object>();
 
