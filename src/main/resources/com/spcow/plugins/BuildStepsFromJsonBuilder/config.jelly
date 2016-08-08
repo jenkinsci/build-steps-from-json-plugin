@@ -11,7 +11,7 @@
         <table width="100%">
             <tr>
                 <td align="right">
-                    <input type="button" value="Generate Groovy"
+                    <input type="button" value="Generate Json"
                            onclick="javascript:add_${generatedKey}(); return false" class="submit-button primary"/>
                     <input type="hidden" name="generatedKey" value="${generatedKey}"/>
                 </td>

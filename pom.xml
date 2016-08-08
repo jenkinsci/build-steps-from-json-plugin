@@ -10,7 +10,7 @@
         <relativePath/>
     </parent>
     <groupId>com.spcow.plugins</groupId>
-    <artifactId>buildsteps-as-code</artifactId>
+    <artifactId>build-steps-from-json</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>hpi</packaging>
 
@@ -20,9 +20,9 @@
         <jenkins-test-harness.version>2.1</jenkins-test-harness.version>
     </properties>
 
-    <name>Build Steps as Code Plugin</name>
-    <description>Build Steps as Code Plugin</description>
-    <url>https://wiki.jenkins-ci.org/display/JENKINS/Build+Steps+as+Code+Plugin</url>
+    <name>Build Steps from Json Plugin</name>
+    <description>Build Steps from Json Plugin</description>
+    <url>https://wiki.jenkins-ci.org/display/JENKINS/Build+Steps+from+Json+Plugin</url>
 
     <licenses>
         <license>

@@ -16,13 +16,13 @@ import java.util.*;
 import org.jenkinsci.plugins.structs.describable.DescribableModel;
 import org.kohsuke.stapler.bind.JavaScriptMethod;
 
-public class BuildStepsAsCodeBuilder extends Builder implements SimpleBuildStep {
+public class BuildStepsFromJsonBuilder extends Builder implements SimpleBuildStep {
 
     private final Builder buildStep;
     private final String buildContent;
 
     @DataBoundConstructor
-    public BuildStepsAsCodeBuilder(Builder buildStep, String buildContent) {
+    public BuildStepsFromJsonBuilder(Builder buildStep, String buildContent) {
         this.buildStep = buildStep;
         this.buildContent = buildContent;
     }
@@ -103,7 +103,7 @@ public class BuildStepsAsCodeBuilder extends Builder implements SimpleBuildStep 
                     net.sf.json.JSONArray buildersListJsonData = net.sf.json.JSONArray.fromObject(builder);
                     for (Object builderObject : buildersListJsonData) {
                         net.sf.json.JSONObject builderJsonData = (net.sf.json.JSONObject) builderObject;
-                        if (builderJsonData.getString("stapler-class").equals("com.spcow.plugins.BuildStepsAsCodeBuilder")) {
+                        if (builderJsonData.getString("stapler-class").equals("com.spcow.plugins.BuildStepsFromJsonBuilder")) {
                             if (builderJsonData.getString("generatedKey").equals(key)) {
                                 actualBuilder = builderJsonData.getString("buildStep");
                             }
@@ -126,7 +126,7 @@ public class BuildStepsAsCodeBuilder extends Builder implements SimpleBuildStep 
         }
 
         public String getDisplayName() {
-            return "Build Steps as Code";
+            return "Build Steps from Json";
         }
 
         public ListBoxModel doFillBuildStepItems() {
