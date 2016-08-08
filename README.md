@@ -1,4 +1,4 @@
-BuildSteps As Code Plugin
+Build Steps from Json Plugin
 ========================
 
 Build
@@ -12,7 +12,7 @@ Run locally
 
 Usage
 ---
-This plugin enables a builder which takes buildsteps as code and executes them in freestyle project. 
+This plugin enables a builder which takes build steps from json data and executes them in freestyle project.
 Snippet generator also provided to user what and how to define builder in formatted code.
 This avoids the large listing of build steps in configuration screen with long scrollable.
 
