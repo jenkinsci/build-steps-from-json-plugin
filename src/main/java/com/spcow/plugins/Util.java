@@ -68,12 +68,22 @@ public class Util {
 
     static void removeStaplerClassFromObject(net.sf.json.JSONObject jsonObject) {
         Iterator<String> keysItr = jsonObject.keys();
+        ArrayList deleteKeys = new ArrayList();
         while (keysItr.hasNext()) {
             String key = keysItr.next();
             Object value = jsonObject.get(key);
             if (key.equals("stapler-class")) {
-                jsonObject.remove(key);
-            } else {
+                deleteKeys.add(key);
+            }
+            else if (key.equals("")) {
+                deleteKeys.add(key);
+            }
+            else if ((value instanceof net.sf.json.JSONObject ?  (((net.sf.json.JSONObject)value).size() == 2) : false)
+                    && (value instanceof net.sf.json.JSONObject ?  (((net.sf.json.JSONObject)value).has("stapler-class")) : false)  
+                    && (value instanceof net.sf.json.JSONObject ?  (((net.sf.json.JSONObject)value).has("$class")) : false)) {
+                deleteKeys.add(key);
+            }
+            else {
                 if (value instanceof net.sf.json.JSONArray) {
                     Iterator arrayIterator = ((net.sf.json.JSONArray) value).iterator();
                     while (arrayIterator.hasNext()) {
@@ -84,6 +94,9 @@ public class Util {
                     removeStaplerClassFromObject((net.sf.json.JSONObject) value);
                 }
             }
+        }
+        for(Object key : deleteKeys) {
+            jsonObject.remove(key);
         }
     }
 }
