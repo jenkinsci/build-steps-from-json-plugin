@@ -66,6 +66,7 @@ public class Util {
         return jsonObject.toString();
     }
 
+    @SuppressFBWarnings("BC_VACUOUS_INSTANCEOF")
     static void removeStaplerClassFromObject(net.sf.json.JSONObject jsonObject) {
         Iterator<String> keysItr = jsonObject.keys();
         ArrayList deleteKeys = new ArrayList();
