@@ -74,16 +74,13 @@ public class Util {
             Object value = jsonObject.get(key);
             if (key.equals("stapler-class")) {
                 deleteKeys.add(key);
-            }
-            else if (key.equals("")) {
+            } else if (key.equals("")) {
                 deleteKeys.add(key);
-            }
-            else if ((value instanceof net.sf.json.JSONObject ?  (((net.sf.json.JSONObject)value).size() == 2) : false)
-                    && (value instanceof net.sf.json.JSONObject ?  (((net.sf.json.JSONObject)value).has("stapler-class")) : false)  
-                    && (value instanceof net.sf.json.JSONObject ?  (((net.sf.json.JSONObject)value).has("$class")) : false)) {
+            } else if ((value instanceof net.sf.json.JSONObject ? (((net.sf.json.JSONObject) value).size() == 2) : false)
+                    && (value instanceof net.sf.json.JSONObject ? (((net.sf.json.JSONObject) value).has("stapler-class")) : false)
+                    && (value instanceof net.sf.json.JSONObject ? (((net.sf.json.JSONObject) value).has("$class")) : false)) {
                 deleteKeys.add(key);
-            }
-            else {
+            } else {
                 if (value instanceof net.sf.json.JSONArray) {
                     Iterator arrayIterator = ((net.sf.json.JSONArray) value).iterator();
                     while (arrayIterator.hasNext()) {
@@ -95,7 +92,7 @@ public class Util {
                 }
             }
         }
-        for(Object key : deleteKeys) {
+        for (Object key : deleteKeys) {
             jsonObject.remove(key);
         }
     }
